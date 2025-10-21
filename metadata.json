@@ -1,0 +1,7 @@
+{
+  "name": "FitMe AI",
+  "description": "An AI-powered personal try-on app. Users upload their photo, add product images, and AI generates realistic previews showing the user wearing or holding those items.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
