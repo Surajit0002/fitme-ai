@@ -32,29 +32,21 @@ export const generateTryOnImage = async (
   const productParts = await Promise.all(productImages.map(fileToGenerativePart));
 
   const textPrompt = {
-    text: `**Task: Image Editing - Virtual Try-On**
+    text: `**TASK: VIRTUAL TRY-ON - ITEM PLACEMENT ONLY**
 
-You are a highly precise, automated photo editor. Your ONLY function is to superimpose fashion items onto an existing photograph of a person.
+**PRIMARY GOAL:** Realistically place the provided clothing/accessory items onto the person in the first image.
 
-**Input:**
-- **Image 1 (Primary Canvas):** A photo of a person. THIS IMAGE MUST NOT BE CHANGED.
-- **Image 2+ (Items):** Photos of clothing, accessories, etc.
+**INPUTS:**
+*   **IMAGE 1 (CANVAS):** The original photo of a person.
+*   **IMAGE 2+ (ITEMS):** The products to be placed on the person.
 
-**CRITICAL, UNBREAKABLE RULES:**
+**NON-NEGOTIABLE RULES:**
 
-1.  **IDENTITY PRESERVATION (MANDATORY):**
-    - The person in the primary canvas image—including their face, facial features, expression, hair, skin tone, body shape, and pose—MUST be preserved with 100% accuracy.
-    - It is ABSOLUTELY FORBIDDEN to generate a new face, alter the face, or replace the person. The output person must be IDENTICAL to the input person.
+1.  **DO NOT CHANGE THE PERSON:** The person in the CANVAS image (face, body, pose, skin tone, hair) must remain **100% IDENTICAL** in the output. Do not generate a new person or alter their features in any way. This is the most important rule.
+2.  **DO NOT CHANGE THE BACKGROUND:** The background of the CANVAS image must remain **100% IDENTICAL**. Do not add, remove, or alter any background elements.
+3.  **ONLY ADD ITEMS:** Your *only* task is to add the ITEMS onto the person in the CANVAS image. Fit the items to the person's pose, not the other way around.
 
-2.  **BACKGROUND INTEGRITY (MANDATORY):**
-    - The background of the primary canvas image MUST remain completely unchanged. Do not add, remove, or modify any part of the background.
-
-3.  **YOUR ONLY TASK:**
-    - Your sole responsibility is to realistically place the provided fashion items (Image 2+) onto the person in the primary canvas (Image 1).
-    - Adapt the items to fit the person's pose, but DO NOT adapt the person to fit the items.
-
-**Final Output Requirement:**
-- The final output must be the ORIGINAL primary canvas image, modified ONLY by the addition of the fashion items. Any output that shows a different person or background is a failure.`
+**OUTPUT:** The final image must be the original CANVAS image, with only the ITEMS added. Any changes to the original person or background are a failure.`
   };
 
   const imageParts = [
