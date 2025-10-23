@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
+import { HeartIcon } from './Icons';
 
 interface ProductCardProps {
   product: Product;
@@ -8,6 +9,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onTryOn }) => {
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleTryOnClick = () => {
     if (onTryOn && !isAdded) {
@@ -19,8 +21,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onTryOn }) => {
 
   return (
     <div className="bg-slate-800/50 rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-1.5 transition-transform duration-300 group">
-      <div className="overflow-hidden">
+      <div className="relative overflow-hidden">
         <img className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" src={product.imageUrl} alt={product.name} />
+        <button 
+          onClick={() => setIsFavorite(!isFavorite)}
+          className="absolute top-3 right-3 bg-black/30 backdrop-blur-sm p-2 rounded-full text-white hover:text-pink-500 transition-colors duration-300"
+          aria-label="Add to favorites"
+        >
+          <HeartIcon className="w-5 h-5" filled={isFavorite} />
+        </button>
       </div>
       <div className="p-4">
         <h3 className="font-bold text-md truncate text-white">{product.name}</h3>

@@ -39,3 +39,15 @@ export interface PlacedProduct {
   scale: number;
   rotation: number;
 }
+
+export interface SavedOutfit {
+  id: number;
+  imageUrl: string;
+  createdAt: string;
+}
+
+export interface HistoryItem {
+  id: number;
+  product: Product;
+  triedOn: string;
+}

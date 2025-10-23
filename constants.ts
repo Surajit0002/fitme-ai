@@ -1,6 +1,7 @@
 
+
 import { HomeIcon, SparklesIcon, StoreIcon, UserIcon } from './components/Icons';
-import { ActiveTab, Product, ProductCategory, TabItem } from './types';
+import { ActiveTab, Product, ProductCategory, TabItem, SavedOutfit, HistoryItem } from './types';
 
 export const TABS: TabItem[] = [
   { id: ActiveTab.HOME, label: 'Home', icon: HomeIcon },
@@ -69,4 +70,18 @@ export const MOCK_PRODUCTS: Product[] = [
     imageUrl: 'https://picsum.photos/id/305/400/400',
     category: ProductCategory.ACCESSORIES,
   },
+];
+
+export const MOCK_SAVED_OUTFITS: SavedOutfit[] = [
+    { id: 1, imageUrl: 'https://picsum.photos/seed/a/800/1000', createdAt: '2 days ago' },
+    { id: 2, imageUrl: 'https://picsum.photos/seed/b/800/1000', createdAt: '5 days ago' },
+    { id: 3, imageUrl: 'https://picsum.photos/seed/c/800/1000', createdAt: '1 week ago' },
+    { id: 4, imageUrl: 'https://picsum.photos/seed/d/800/1000', createdAt: '2 weeks ago' },
+];
+
+export const MOCK_HISTORY_ITEMS: HistoryItem[] = [
+    { id: 1, product: MOCK_PRODUCTS[0], triedOn: '1 day ago' },
+    { id: 2, product: MOCK_PRODUCTS[2], triedOn: '3 days ago' },
+    { id: 3, product: MOCK_PRODUCTS[5], triedOn: '1 week ago' },
+    { id: 4, product: MOCK_PRODUCTS[7], triedOn: '2 weeks ago' },
 ];
